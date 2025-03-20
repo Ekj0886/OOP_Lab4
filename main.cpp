@@ -14,7 +14,9 @@ int main(int argc, char *argv[]) {
     ifstream infile (argv[1]);
     ofstream outfile(argv[2]);
 
-    for(int i = 0; i <= 10; i++) {
+    int case_num = 11;
+
+    for(int i = 0; i < case_num; i++) {
 
         string file = "testcase/matrix" + to_string(i) + ".m";
         CNumpy test(file);

@@ -4,3 +4,7 @@ Lab4
 mat_gen.cpp
 mat_gen
 secret_pic.txt
+obj/CNumpy.o
+obj/main.o
+obj/CNumpy.d
+obj/main.d

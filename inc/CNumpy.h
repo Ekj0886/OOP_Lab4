@@ -12,7 +12,6 @@ class CNumpy{
         int col;
 
     public:
-        // Part 1 [constructor/destructor, getter]
         // Constructor & Destructor
         CNumpy(string input_filename);
         ~CNumpy();
@@ -22,8 +21,6 @@ class CNumpy{
         int getRow()const;
         int getCol()const;
 
-
-        // Part 2 [min/max, argmin/max]
         // Find the min/max value in the matrix
         int min()const;
         int max()const;
@@ -32,12 +29,13 @@ class CNumpy{
         void argmin(int *idx1, int *idx2);
         void argmax(int *idx1, int *idx2);
 
-        // Part 3 [concatenate, render]
-        // Concatenate the 2 matrix in place with row/col
+        // Quantize element with levels
         void quantize(int levels);
+
+        // Perform convolution using kernel 
         void conv(int** kernel, int k_row, int k_col);
 
-        // Display the matrix info in ASCII
+        // Display matrix 
         void render(ofstream &outfile);
 };
 
