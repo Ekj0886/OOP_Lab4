@@ -41,7 +41,7 @@ $(OBJDIR)/main.o: main.cpp | $(OBJDIR)
 
 # Clean rule
 clean:
-	rm -rf $(OBJDIR) $(TARGET)
+	rm -rf $(OBJDIR) $(TARGET) $(filter-out $(OBJDIR)/checker.o, $(OBJS))
 
 # Phony targets
 .PHONY: all clean

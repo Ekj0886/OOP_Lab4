@@ -1,5 +1,6 @@
 dora/
-src/*.cpp
+src/checker.cpp
+src/golden_CNumpy.cpp
 Lab4
 mat_gen.cpp
 mat_gen
