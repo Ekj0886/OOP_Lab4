@@ -9,3 +9,5 @@ obj/CNumpy.o
 obj/main.o
 obj/CNumpy.d
 obj/main.d
+obj/golden_CNumpy.d 
+obj/golden_CNumpy.o 
