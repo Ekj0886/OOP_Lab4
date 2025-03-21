@@ -1,47 +1,38 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -I$(INCDIR)
+CXXFLAGS = -Wall -std=c++11
+OBJ_DIR = obj
+SRC_DIR = src
+INC_DIR = inc
 
-# Directories
-SRCDIR = src
-OBJDIR = obj
-INCDIR = inc
+# Sources
+SRC = main.cpp $(SRC_DIR)/mat_gen.cpp
+OBJ = $(OBJ_DIR)/main.o $(OBJ_DIR)/checker.o $(OBJ_DIR)/CNumpy.o 
 
-# Source and object files
-SRCS = $(wildcard $(SRCDIR)/*.cpp) main.cpp
-OBJS = $(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SRCS)))
+# Output executable
+OUTPUT = Lab4
 
-# Dependency files
-DEPS = $(patsubst %.cpp, $(OBJDIR)/%.d, $(notdir $(SRCS)))
+# Default target
+all: clean $(OUTPUT)
 
-# Name of the executable
-TARGET = Lab4
+# Linking the object files to create the executable
+$(OUTPUT): $(OBJ)
+	$(CXX) $(CXXFLAGS) -o $(OUTPUT) $(OBJ)
 
-# Default rule
-all: clean $(TARGET)
+# Compile main.cpp
+$(OBJ_DIR)/main.o: main.cpp
+	$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c main.cpp -o $(OBJ_DIR)/main.o
 
-# Rule to create object directory if it doesn't exist
-$(OBJDIR):
-	@mkdir -p $(OBJDIR)
+# Link with the precompiled checker.o (no need for checker.cpp)
+$(OBJ_DIR)/checker.o: $(OBJ_DIR)/checker.o
 
-# Rule to build the target executable
-$(TARGET): $(OBJS) | $(OBJDIR)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(TARGET)
+# Compile CNumpy.cpp
+$(OBJ_DIR)/CNumpy.o: $(SRC_DIR)/CNumpy.cpp
+	$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/CNumpy.cpp -o $(OBJ_DIR)/CNumpy.o
 
-# Rule to compile object files from source files
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
-	$(CXX) $(CXXFLAGS) -MMD -c $< -o $@
-
-# Rule to compile the main file
-$(OBJDIR)/main.o: main.cpp | $(OBJDIR)
-	$(CXX) $(CXXFLAGS) -MMD -c $< -o $@
-
-# Include dependency files
--include $(DEPS)
-
-# Clean rule
+# Clean object files and executable, excluding checker.o
 clean:
-	rm -rf $(OBJDIR) $(TARGET) $(filter-out $(OBJDIR)/checker.o, $(OBJS))
+	rm -f obj/CNumpy.o obj/CNumpy.d obj/main.o obj/main.d
 
-# Phony targets
 .PHONY: all clean
+
