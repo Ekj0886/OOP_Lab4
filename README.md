@@ -4,7 +4,7 @@
 * Dynamic array manipulation
 
 ## **There're 4 parts in this lab:**
-* Getter functions
+* Constructor/Destructor/Getter functions
 * Min/Max functions
 * Quantization/Convolution functions
 * Render function for a secret picture
