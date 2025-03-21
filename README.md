@@ -23,7 +23,7 @@ $ ./Lab4
 
 ## **Demo:**
 * You should see "Congratulations" if all 11 test cases pass
-* If a function fails, error messages will appear in the terminal.
-* Find a TA for the demo and tell them the character in the secret picture.
+* If a function fails, error messages will appear in the terminal
+* Find a TA for the demo and tell them the character in the secret picture
 
 ## **Have Fun :)**
