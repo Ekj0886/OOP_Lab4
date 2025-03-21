@@ -16,6 +16,7 @@
 
 ## **How to run:**
 Navigate to the OOP_Lab4 repository and run the following commands in a Linux environment:
+
 (Use the given OOP workstation only)
 ```
 make
